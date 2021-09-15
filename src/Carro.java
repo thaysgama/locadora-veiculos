@@ -8,10 +8,10 @@ public class Carro extends Veiculo {
     private int quantPortas;
 
     //construtor
-    public Carro(String cor, int ano, String placa, String motor,
+    public Carro(int codigo, String cor, int ano, String placa, String motor,
                  boolean arCondicionado, int numPessoas, boolean direcaoHidraulica,
                  boolean airbag, int quantPortas) {
-        super(cor, ano, placa, motor);
+        super(codigo, cor, ano, placa, motor);
         this.arCondicionado = arCondicionado;
         this.numPessoas = numPessoas;
         this.direcaoHidraulica = direcaoHidraulica;
@@ -67,4 +67,14 @@ public class Carro extends Veiculo {
 
     }
 
+    @Override
+    public String toString() {
+        return "Carro{" +
+                "arCondicionado=" + arCondicionado +
+                ", numPessoas=" + numPessoas +
+                ", direcaoHidraulica=" + direcaoHidraulica +
+                ", airbag=" + airbag +
+                ", quantPortas=" + quantPortas +
+                '}';
+    }
 }

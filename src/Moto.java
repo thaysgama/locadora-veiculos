@@ -6,16 +6,25 @@ public class Moto extends Veiculo {
 
     //construtor
 
-    public Moto(String cor, int ano, String placa, String motor, int peso, int alturaBanco) {
-        super(cor, ano, placa, motor);
+    public Moto(int codigo, String cor, int ano, String placa, String motor, int peso, int alturaBanco) {
+        super(codigo, cor, ano, placa, motor);
         this.peso = peso;
         this.alturaBanco = alturaBanco;
     }
 
+    //métodos
     @Override
     public void calcularDiaria() {
 
     }
 
-    //métodos
+
+
+    @Override
+    public String toString() {
+        return "Moto{" +
+                "peso=" + peso +
+                ", alturaBanco=" + alturaBanco +
+                '}';
+    }
 }
