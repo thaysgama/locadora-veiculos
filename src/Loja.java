@@ -33,7 +33,7 @@ public class Loja {
         System.out.println("Moto cadastrada com sucesso!");
     }
 
-    public void cadastrarMoto(Locacao locacao){
+    public void cadastrarLocacao(Locacao locacao){
         listaLocacao.add(locacao);
         System.out.println("Locação cadastrada com sucesso!");
     }
@@ -93,5 +93,27 @@ public class Loja {
         }
     }
 
+    public Cliente buscarCliente(String numDocumento){
+        for (Cliente cliente : listaClientes){
+            if(cliente.getNumDocumento().equals(numDocumento)){
+                return cliente;
+            }
+        } return null;
+    }
 
+    public Veiculo buscarVeiculo(int tipo, int codigo){
+        if(tipo == 1){
+            for (Carro carro: listaCarros){
+                if(carro.getCodigo() == codigo){
+                    return carro;
+                }
+            }
+        } else if (tipo== 2){
+            for (Moto moto : listaMotos){
+                if(moto.getCodigo() == codigo){
+                    return moto;
+                }
+            }
+        } return null;
+    }
 }

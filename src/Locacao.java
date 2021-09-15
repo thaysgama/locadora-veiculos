@@ -1,18 +1,21 @@
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Locacao {
 
+    private static int idx=1;
     private int codigo;
     private Cliente cliente;
     private Veiculo veiculo;
-    private LocalDateTime dataHoraEntrada;
-    private LocalDateTime dataHoraSaida;
+    private LocalDate dataEntrada;
+    private LocalDate dataSaida;
 
 
-    public Locacao(int codigo, LocalDateTime dataHoraEntrada, LocalDateTime dataHoraSaida) {
-        this.codigo = codigo;
-        this.dataHoraEntrada = dataHoraEntrada;
-        this.dataHoraSaida = dataHoraSaida;
+    public Locacao(Cliente cliente, Veiculo veiculo, LocalDate dataEntrada, LocalDate dataSaida) {
+        this.codigo = idx++;
+        this.cliente = cliente;
+        this.veiculo = veiculo;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
     }
 
     //métodos
@@ -25,13 +28,16 @@ public class Locacao {
         return codigo;
     }
 
+
+
     @Override
     public String toString() {
         return "Locacao{" +
-                "cliente=" + cliente +
+                "codigo=" + codigo +
+                ", cliente=" + cliente +
                 ", veiculo=" + veiculo +
-                ", dataHoraEntrada=" + dataHoraEntrada +
-                ", dataHoraSaida=" + dataHoraSaida +
+                ", dataHoraEntrada=" + dataEntrada +
+                ", dataHoraSaida=" + dataSaida +
                 '}';
     }
 }

@@ -1,6 +1,7 @@
 public abstract class Veiculo implements Comparable<Veiculo>{
 
     //atributos
+    private static int idx=1;
     private int codigo;
     private String cor;
     private int ano;
@@ -8,8 +9,8 @@ public abstract class Veiculo implements Comparable<Veiculo>{
     private String motor;
 
     //construtor
-    public Veiculo(int codigo, String cor, int ano, String placa, String motor) {
-        this.codigo = codigo;
+    public Veiculo(String cor, int ano, String placa, String motor) {
+        this.codigo = idx++;
         this.cor = cor;
         this.ano = ano;
         this.placa = placa;
@@ -69,7 +70,8 @@ public abstract class Veiculo implements Comparable<Veiculo>{
     @Override
     public String toString() {
         return "Veiculo{" +
-                "cor='" + cor + '\'' +
+                "codigo='" + codigo + '\'' +
+                ", cor='" + cor + '\'' +
                 ", ano=" + ano +
                 ", placa='" + placa + '\'' +
                 ", motor='" + motor + '\'' +
