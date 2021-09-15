@@ -7,7 +7,7 @@ public class Loja {
     private ArrayList<Carro>listaCarros = new ArrayList<>();
     private ArrayList<Moto>listaMotos = new ArrayList<>();
     private ArrayList<Locacao>listaLocacao = new ArrayList<>();
-//    private ArrayList<Cliente>ListaClientes = new ArrayList<>();
+//    private ArrayList<Cliente>listaClientes = new ArrayList<>();
 
 
     public Loja(String nome, String cnpj) {
