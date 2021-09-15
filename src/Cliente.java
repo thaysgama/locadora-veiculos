@@ -9,4 +9,17 @@ public class Cliente {
         this.numDocumento = numDocumento;
         this.contato = contato;
     }
+
+    public String getNumDocumento() {
+        return numDocumento;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "nome='" + nome + '\'' +
+                ", numDocumento='" + numDocumento + '\'' +
+                ", contato='" + contato + '\'' +
+                '}';
+    }
 }
