@@ -3,58 +3,34 @@ public abstract class Veiculo implements Comparable<Veiculo>{
     //atributos
     private static int idx=1;
     private int codigo;
-    private String cor;
+    private String marca;
+    private String modelo;
     private int ano;
-    private String placa;
-    private String motor;
+    private double motor;
 
     //construtor
-    public Veiculo(String cor, int ano, String placa, String motor) {
+    public Veiculo(String marca, String modelo, int ano, double motor) {
         this.codigo = idx++;
-        this.cor = cor;
+        this.marca = marca;
+        this.modelo = modelo;
         this.ano = ano;
-        this.placa = placa;
         this.motor = motor;
     }
 
     //métodos
-    public abstract void calcularDiaria();
+    public abstract double calcularDiaria();
 
     public int getCodigo() {
         return codigo;
     }
 
-//    public String getCor() {
-//        return cor;
-//    }
-//
-//    public void setCor(String cor) {
-//        this.cor = cor;
-//    }
-
     public int getAno() {
         return ano;
     }
 
-//    public void setAno(int ano) {
-//        this.ano = ano;
-//    }
-
-//    public String getPlaca() {
-//        return placa;
-//    }
-//
-//    public void setPlaca(String placa) {
-//        this.placa = placa;
-//    }
-//
-//    public String getMotor() {
-//        return motor;
-//    }
-//
-//    public void setMotor(String motor) {
-//        this.motor = motor;
-//    }
+    public double getMotor() {
+        return motor;
+    }
 
 
     @Override
@@ -70,11 +46,11 @@ public abstract class Veiculo implements Comparable<Veiculo>{
     @Override
     public String toString() {
         return "Veiculo{" +
-                "codigo='" + codigo + '\'' +
-                ", cor='" + cor + '\'' +
+                "codigo=" + codigo +
+                ", marca='" + marca + '\'' +
+                ", modelo='" + modelo + '\'' +
                 ", ano=" + ano +
-                ", placa='" + placa + '\'' +
-                ", motor='" + motor + '\'' +
+                ", motor=" + motor +
                 '}';
     }
 }

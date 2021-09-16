@@ -35,7 +35,7 @@ public class Loja {
 
     public void cadastrarLocacao(Locacao locacao){
         listaLocacao.add(locacao);
-        System.out.println("Locação cadastrada com sucesso!");
+        System.out.println("Locação realizada com sucesso!");
     }
 
     public void exibirLocacao(){
@@ -113,6 +113,14 @@ public class Loja {
                 if(moto.getCodigo() == codigo){
                     return moto;
                 }
+            }
+        } return null;
+    }
+
+    public Locacao buscarLocacao(int codigo){
+        for (Locacao locacao: listaLocacao){
+            if(locacao.getCodigo() == codigo){
+                return locacao;
             }
         } return null;
     }

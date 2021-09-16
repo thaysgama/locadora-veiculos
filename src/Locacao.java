@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Locacao {
 
@@ -21,13 +22,14 @@ public class Locacao {
     //métodos
 
     public void calcularLocacao(){
-
+        long quantDiarias = ChronoUnit.DAYS.between(this.dataEntrada, this.dataSaida);
+        double valor = this.veiculo.calcularDiaria()*quantDiarias;
+        System.out.println("Total a ser pago pela sua locação R$"+valor);
     }
 
     public int getCodigo() {
         return codigo;
     }
-
 
 
     @Override

@@ -8,10 +8,10 @@ public class Carro extends Veiculo {
     private int quantPortas;
 
     //construtor
-    public Carro(String cor, int ano, String placa, String motor,
-                 boolean arCondicionado, int numPessoas, boolean direcaoHidraulica,
-                 boolean airbag, int quantPortas) {
-        super(cor, ano, placa, motor);
+
+    public Carro(String marca, String modelo, int ano, double motor, boolean arCondicionado, int numPessoas,
+                 boolean direcaoHidraulica, boolean airbag, int quantPortas) {
+        super(marca, modelo, ano, motor);
         this.arCondicionado = arCondicionado;
         this.numPessoas = numPessoas;
         this.direcaoHidraulica = direcaoHidraulica;
@@ -19,39 +19,22 @@ public class Carro extends Veiculo {
         this.quantPortas = quantPortas;
     }
 
+
     //métodos
-
-
     public boolean isArCondicionado() {
         return arCondicionado;
-    }
-
-    public void setArCondicionado(boolean arCondicionado) {
-        this.arCondicionado = arCondicionado;
     }
 
     public int getNumPessoas() {
         return numPessoas;
     }
 
-    public void setNumPessoas(int numPessoas) {
-        this.numPessoas = numPessoas;
-    }
-
     public boolean isDirecaoHidraulica() {
         return direcaoHidraulica;
     }
 
-    public void setDirecaoHidraulica(boolean direcaoHidraulica) {
-        this.direcaoHidraulica = direcaoHidraulica;
-    }
-
     public boolean isAirbag() {
         return airbag;
-    }
-
-    public void setAirbag(boolean airbag) {
-        this.airbag = airbag;
     }
 
     public int getQuantPortas() {
@@ -63,8 +46,24 @@ public class Carro extends Veiculo {
     }
 
     @Override
-    public void calcularDiaria() {
-
+    public double calcularDiaria() {
+        double valor = 50.0;
+        if(this.getAno() > 2019){
+            valor += 20;
+        } if (this.getMotor() > 1.0) {
+            valor += 20;
+        } if (this.airbag){
+            valor += 20;
+        } if (this.numPessoas >5){
+            valor += 20;
+        } if (this.direcaoHidraulica){
+            valor += 20;
+        } if (this.arCondicionado){
+            valor += 20;
+        } if (this.quantPortas>2){
+            valor += 20;
+        }
+        return valor;
     }
 
     @Override
