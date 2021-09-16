@@ -34,12 +34,12 @@ public class Locacao {
 
     @Override
     public String toString() {
-        return "Locacao{" +
-                "codigo=" + codigo +
-                ", cliente=" + cliente +
-                ", veiculo=" + veiculo +
-                ", dataHoraEntrada=" + dataEntrada +
-                ", dataHoraSaida=" + dataSaida +
-                '}';
+        return "Locacao [" +
+                "Codigo: " + codigo +
+                ", " + cliente +
+                ", " + veiculo +
+                ", Data recebimento: " + dataEntrada +
+                ", Data entrega: " + dataSaida +
+                ']';
     }
 }

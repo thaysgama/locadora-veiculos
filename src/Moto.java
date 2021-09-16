@@ -26,9 +26,9 @@ public class Moto extends Veiculo {
 
     @Override
     public String toString() {
-        return "Moto{" +
-                "peso=" + peso +
-                ", alturaBanco=" + alturaBanco +
-                "} " + super.toString();
+        return "Moto [" + super.toString() +
+                ", Peso: " + peso +
+                ", Altura do banco:" + alturaBanco +
+                "]";
     }
 }

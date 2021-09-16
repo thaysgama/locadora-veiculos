@@ -21,29 +21,6 @@ public class Carro extends Veiculo {
 
 
     //métodos
-    public boolean isArCondicionado() {
-        return arCondicionado;
-    }
-
-    public int getNumPessoas() {
-        return numPessoas;
-    }
-
-    public boolean isDirecaoHidraulica() {
-        return direcaoHidraulica;
-    }
-
-    public boolean isAirbag() {
-        return airbag;
-    }
-
-    public int getQuantPortas() {
-        return quantPortas;
-    }
-
-    public void setQuantPortas(int quantPortas) {
-        this.quantPortas = quantPortas;
-    }
 
     @Override
     public double calcularDiaria() {
@@ -68,12 +45,12 @@ public class Carro extends Veiculo {
 
     @Override
     public String toString() {
-        return "Carro{" +
-                "arCondicionado=" + arCondicionado +
-                ", numPessoas=" + numPessoas +
-                ", direcaoHidraulica=" + direcaoHidraulica +
-                ", airbag=" + airbag +
-                ", quantPortas=" + quantPortas +
-                "} " + super.toString();
+        return "Carro [" +super.toString()+
+                "Ar Condicionado: " + arCondicionado +
+                ", Capacidade: " + numPessoas +
+                ", Direção Hidráulica: " + direcaoHidraulica +
+                ", Airbag: " + airbag +
+                ", Quantidade Portas: " + quantPortas +
+                "]";
     }
 }

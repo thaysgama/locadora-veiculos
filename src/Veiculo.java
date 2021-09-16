@@ -45,12 +45,10 @@ public abstract class Veiculo implements Comparable<Veiculo>{
 
     @Override
     public String toString() {
-        return "Veiculo{" +
-                "codigo=" + codigo +
-                ", marca='" + marca + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", ano=" + ano +
-                ", motor=" + motor +
-                '}';
+        return  "Codigo: " + codigo +
+                ", Marca: " + marca +
+                ", Modelo: " + modelo +
+                ", Ano Fabricação: " + ano +
+                ", Motor: " + motor;
     }
 }

@@ -9,7 +9,7 @@ public class Main {
     private static void exibirMenu(){
         System.out.println("\n\n");
         System.out.println("+-------------------------------------------+");
-        System.out.println("|        Menu de Opções                     |");
+        System.out.println("|   Locadora Veículos T&M - Menu de Opções  |");
         System.out.println("+-------------------------------------------+");
         System.out.println("| 1 - Cadastrar Cliente                     |");
         System.out.println("| 2 - Cadastrar Carro                       |");
@@ -27,6 +27,22 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        //cadastra alguns elementos
+        Cliente thays = new Cliente("Thays Gama", "001", "859965601");
+        Cliente mar = new Cliente("Mar Brito", "002", "559764601");
+        Carro hb20 = new Carro("Hyundai", "HB20",2021,1.0,true,5,true,true,5);
+        Moto moto = new Moto("Honda","CRF 250F",2019,250,114,883);
+        locadora.cadastrarCliente(thays);
+        locadora.cadastrarCliente(mar);
+        locadora.cadastrarCarro(hb20);
+        locadora.cadastrarMoto(moto);
+        locadora.cadastrarLocacao(new Locacao( thays, hb20,
+                LocalDate.parse("2021-09-16", DateTimeFormatter.ISO_DATE),
+                LocalDate.parse("2021-09-20", DateTimeFormatter.ISO_DATE)));
+        locadora.cadastrarLocacao(new Locacao( mar, moto,
+                LocalDate.parse("2021-09-16", DateTimeFormatter.ISO_DATE),
+                LocalDate.parse("2021-09-25", DateTimeFormatter.ISO_DATE)));
+
         //classe para receber inputs do usuário
         Scanner leitor = new Scanner(System.in);
         int opcao=0;
@@ -81,86 +97,130 @@ public class Main {
     }
 
     private static void cadastrarCliente(){
+
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o nome do cliente");
         String nome = leitor.nextLine();
+
         System.out.println("Digite o numero do documento");
         String numDoc = leitor.nextLine();
+
         System.out.println("Digite o telefone para contato");
         String contato = leitor.nextLine();
+
         locadora.cadastrarCliente(new Cliente(nome,numDoc,contato));
     }
 
     private static void cadastrarCarro(){
+
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite a marca:");
         String marca = leitor.nextLine();
+
         System.out.println("Digite a modelo:");
         String modelo = leitor.nextLine();
+
         System.out.println("Digite o ano de fabricação:");
         int ano = leitor.nextInt();
+
         System.out.println("Digite a potência do motor:");
         double motor = leitor.nextDouble();
+
         System.out.println("Digite se tem ar condicionado(true/false):");
         boolean arCondicionado = leitor.nextBoolean();
+
         System.out.println("Digite a capacidade de passageiros:");
         int capacidade = leitor.nextInt();
+
         System.out.println("Digite se tem direção hidráulica(true/false):");
         boolean dirHidraulica = leitor.nextBoolean();
+
         System.out.println("Digite se tem airbag(true/false):");
         boolean airbag = leitor.nextBoolean();
+
         System.out.println("Digite a quantidade de portas:");
         int qtPortas = leitor.nextInt();
+
         locadora.cadastrarCarro(new Carro(marca,modelo,ano,motor,arCondicionado,capacidade,dirHidraulica,airbag,qtPortas));
     }
 
     private static void cadastrarMoto(){
+
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite a marca:");
         String marca = leitor.nextLine();
+
         System.out.println("Digite a modelo:");
         String modelo = leitor.nextLine();
+
         System.out.println("Digite o ano de fabricação:");
         int ano = leitor.nextInt();
+
         System.out.println("Digite as cilindradas do motor:");
         double motor = leitor.nextDouble();
+
         System.out.println("Digite o peso em kg:");
         int peso = leitor.nextInt();
+
         System.out.println("Digite a altura do banco em cm:");
         int altura = leitor.nextInt();
+
         locadora.cadastrarMoto(new Moto(marca,modelo,ano,motor,peso,altura));
     }
 
     private static void cadastrarLocacao(){
+
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o número do documento de um cliente cadastrado:");
         String numCliente = leitor.nextLine();
         Cliente cliente = locadora.buscarCliente(numCliente);
-        System.out.println("Digite [1] para selecionar Carro ou [2] para Moto.");
-        int escolhaVeiculo = leitor.nextInt();
-        System.out.println("Digite o código do veículo escolhido:");
-        int codVeiculo = leitor.nextInt();
-        Veiculo veiculo = locadora.buscarVeiculo(escolhaVeiculo,codVeiculo);
-        System.out.println("Digite a data de recebimento do veiculo (YYYY-MM-DD):");
-        String dataEmprestimo = leitor.nextLine();
-        System.out.println("Digite a data de devolução do veiculo (YYYY-MM-DD):");
-        String dataDevolucao = leitor.nextLine();
 
-        //transforma a String no formato 2021-04-23 e transforma em tipo data
-        LocalDate localDateRetirada = LocalDate.parse(dataEmprestimo, DateTimeFormatter.ISO_DATE);
-        LocalDate localDateDevolucao = LocalDate.parse(dataDevolucao, DateTimeFormatter.ISO_DATE);
+        if(cliente != null){
 
-        Locacao locacao = new Locacao(cliente, veiculo,localDateRetirada, localDateDevolucao);
-        locacao.calcularLocacao();
+            System.out.println("Digite [1] para selecionar Carro ou [2] para Moto.");
+            int escolhaVeiculo = leitor.nextInt();
+            if(escolhaVeiculo == 1 || escolhaVeiculo ==2){
 
-        locadora.cadastrarLocacao(locacao);
+                System.out.println("Digite o código do veículo escolhido:");
+                int codVeiculo = leitor.nextInt();
+                leitor.nextLine();
+                Veiculo veiculo = locadora.buscarVeiculo(escolhaVeiculo,codVeiculo);
+
+                if(veiculo !=null){
+
+                    System.out.println("Digite a data de recebimento do veiculo (YYYY-MM-DD):");
+                    String dataEmprestimo = leitor.nextLine();
+
+                    System.out.println("Digite a data de devolução do veiculo (YYYY-MM-DD):");
+                    String dataDevolucao = leitor.nextLine();
+
+                    //transforma a String no formato 2021-04-23 e transforma em tipo data
+                    LocalDate localDateRetirada = LocalDate.parse(dataEmprestimo, DateTimeFormatter.ISO_DATE);
+                    LocalDate localDateDevolucao = LocalDate.parse(dataDevolucao, DateTimeFormatter.ISO_DATE);
+
+                    Locacao locacao = new Locacao(cliente, veiculo,localDateRetirada, localDateDevolucao);
+                    locacao.calcularLocacao();
+
+                    locadora.cadastrarLocacao(locacao);
+
+                } else {
+                    System.out.println("Veículo inválido.");
+                }
+            } else {
+                System.out.println("Tipo de veículo inválido.");
+            }
+        } else {
+            System.out.println("Cliente inválido.");
+        }
 
     }
 
     private static void excluirCliente(){
+
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o número do documento do cliente:");
         String numDoc = leitor.nextLine();
+
         if(locadora.buscarCliente(numDoc) != null){
             locadora.removerCliente(numDoc);
             System.out.println("Cliente removido com sucesso");
@@ -170,9 +230,11 @@ public class Main {
     }
 
     private static void excluirCarro(){
+
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o código do carro:");
         int codigo = leitor.nextInt();
+
         if(locadora.buscarVeiculo(1,codigo) != null){
             locadora.removerCarro(codigo);
             System.out.println("Carro removido com sucesso");
@@ -182,9 +244,11 @@ public class Main {
     }
 
     private static void excluirMoto(){
+
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o código da moto:");
         int codigo = leitor.nextInt();
+
         if(locadora.buscarVeiculo(2,codigo) != null){
             locadora.removerMoto(codigo);
             System.out.println("Moto removida com sucesso");
@@ -194,9 +258,11 @@ public class Main {
     }
 
     private static void excluirLocacao(){
+        
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o código da locação:");
         int codigo = leitor.nextInt();
+
         if(locadora.buscarLocacao(codigo) != null){
             locadora.removerLocacao(codigo);
             System.out.println("Locação removida com sucesso");

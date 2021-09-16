@@ -62,35 +62,19 @@ public class Loja {
     }
 
     public void removerLocacao(int codigo){
-        for(Locacao locacao : listaLocacao){
-            if(locacao.getCodigo() == codigo){
-                listaLocacao.remove(locacao);
-            }
-        }
+        listaLocacao.removeIf(locacao -> locacao.getCodigo() == codigo);
     }
 
     public void removerCliente(String numDocumento){
-        for(Cliente cliente : listaClientes){
-            if(cliente.getNumDocumento().equals(numDocumento)){
-                listaClientes.remove(cliente);
-            }
-        }
+        listaClientes.removeIf(cliente -> cliente.getNumDocumento().equals(numDocumento));
     }
 
     public void removerMoto(int codigo){
-        for(Moto moto : listaMotos){
-            if(moto.getCodigo() == codigo){
-                listaMotos.remove(codigo);
-            }
-        }
+        listaMotos.removeIf(moto -> moto.getCodigo() == codigo);
     }
 
     public void removerCarro(int codigo){
-        for(Carro carro : listaCarros){
-            if(carro.getCodigo() == codigo){
-                listaCarros.remove(carro);
-            }
-        }
+        listaCarros.removeIf(carro -> carro.getCodigo() == codigo);
     }
 
     public Cliente buscarCliente(String numDocumento){
