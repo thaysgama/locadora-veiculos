@@ -11,6 +11,10 @@ public class Moto extends Veiculo {
         this.alturaBanco = alturaBanco;
     }
 
+    public Moto(String marca, String modelo, int ano, double motor){
+        super(marca, modelo, ano, motor);
+    }
+
     //métodos
     @Override
     public double calcularDiaria() {

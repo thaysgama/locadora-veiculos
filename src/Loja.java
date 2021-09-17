@@ -34,6 +34,7 @@ public class Loja {
     }
 
     public void cadastrarLocacao(Locacao locacao){
+
         listaLocacao.add(locacao);
         System.out.println("Locação realizada com sucesso!");
     }

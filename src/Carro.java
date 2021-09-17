@@ -19,6 +19,10 @@ public class Carro extends Veiculo {
         this.quantPortas = quantPortas;
     }
 
+    public Carro(String marca, String modelo, int ano, double motor){
+        super(marca, modelo, ano, motor);
+    }
+
 
     //métodos
 

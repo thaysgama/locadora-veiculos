@@ -91,7 +91,7 @@ public class Main {
                     System.out.println("Volte sempre!");
                     break;
                 default:
-                    System.out.println("Opção inválida");
+                    System.out.println("Opção inválida.");
             }
         }
     }
@@ -99,13 +99,13 @@ public class Main {
     private static void cadastrarCliente(){
 
         Scanner leitor = new Scanner(System.in);
-        System.out.println("Digite o nome do cliente");
+        System.out.println("Digite o nome do cliente:");
         String nome = leitor.nextLine();
 
-        System.out.println("Digite o numero do documento");
+        System.out.println("Digite o numero do documento:");
         String numDoc = leitor.nextLine();
 
-        System.out.println("Digite o telefone para contato");
+        System.out.println("Digite o telefone para contato:");
         String contato = leitor.nextLine();
 
         locadora.cadastrarCliente(new Cliente(nome,numDoc,contato));
@@ -188,20 +188,29 @@ public class Main {
 
                 if(veiculo !=null){
 
-                    System.out.println("Digite a data de recebimento do veiculo (YYYY-MM-DD):");
-                    String dataEmprestimo = leitor.nextLine();
+                    boolean invalido = true;
 
-                    System.out.println("Digite a data de devolução do veiculo (YYYY-MM-DD):");
-                    String dataDevolucao = leitor.nextLine();
+                    while (invalido) {
 
-                    //transforma a String no formato 2021-04-23 e transforma em tipo data
-                    LocalDate localDateRetirada = LocalDate.parse(dataEmprestimo, DateTimeFormatter.ISO_DATE);
-                    LocalDate localDateDevolucao = LocalDate.parse(dataDevolucao, DateTimeFormatter.ISO_DATE);
+                        System.out.println("Digite a data de recebimento do veiculo (YYYY-MM-DD):");
+                        String dataEmprestimo = leitor.nextLine();
 
-                    Locacao locacao = new Locacao(cliente, veiculo,localDateRetirada, localDateDevolucao);
-                    locacao.calcularLocacao();
+                        System.out.println("Digite a data de devolução do veiculo (YYYY-MM-DD):");
+                        String dataDevolucao = leitor.nextLine();
 
-                    locadora.cadastrarLocacao(locacao);
+                        //transforma a String no formato 2021-04-23 e transforma em tipo data
+                        LocalDate localDateRetirada = LocalDate.parse(dataEmprestimo, DateTimeFormatter.ISO_DATE);
+                        LocalDate localDateDevolucao = LocalDate.parse(dataDevolucao, DateTimeFormatter.ISO_DATE);
+
+                        if (localDateDevolucao.isBefore(localDateRetirada)) {
+                            System.out.println("A data devolução deve ser depois da data de retirada.");
+                        } else {
+                            invalido = false;
+                            Locacao locacao = new Locacao(cliente, veiculo,localDateRetirada, localDateDevolucao);
+                            locacao.calcularLocacao();
+                            locadora.cadastrarLocacao(locacao);
+                        }
+                    }
 
                 } else {
                     System.out.println("Veículo inválido.");
